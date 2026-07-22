@@ -1,0 +1,67 @@
+# 问题描述与教练建议文案库
+metrics:
+  elbow_angle:
+    good:
+      problem: ""
+      suggestion: "肘关节角度保持良好，发力结构合理。"
+    fair:
+      problem: "肘关节角度略有偏差，发力效率可能受到影响。"
+      suggestion: "注意击球时保持肘部与身体约一拳距离，避免过紧或过开。"
+    poor:
+      problem: "肘关节角度异常，手臂发力结构存在明显问题。"
+      suggestion: "建议从慢动作开始纠正引拍姿势，大臂放松，肘部保持稳定支撑点。"
+
+  racket_height:
+    good:
+      problem: ""
+      suggestion: "引拍高度合适，能够充分利用来球旋转。"
+    fair:
+      problem: "引拍高度略有不合理，可能影响击球质量。"
+      suggestion: "正手位注意引拍至右膝外侧下方，反手位注意引拍至左腹前。"
+    poor:
+      problem: "引拍高度明显不当，难以有效起球或发力。"
+      suggestion: "针对不同旋转强度的来球，调整引拍起始高度，建议进行多球定点训练。"
+
+  hip_rotation:
+    good:
+      problem: ""
+      suggestion: "转腰充分，身体发力链条完整。"
+    fair:
+      problem: "转腰幅度稍有不足，主要靠手臂发力。"
+      suggestion: "击球前主动转腰引拍，体会用身体重心带动手臂的感觉。"
+    poor:
+      problem: "转腰髋偏移过大，身体稳定性差。"
+      suggestion: "先进行原地转腰练习，固定髋部位置，再结合步法进行完整动作训练。"
+
+  cog_fluctuation:
+    good:
+      problem: ""
+      suggestion: "重心控制稳定，击球还原节奏好。"
+    fair:
+      problem: "重心起伏略有偏大，影响连续拉球稳定性。"
+      suggestion: "注意击球过程中保持头部高度稳定，减少上下起伏。"
+    poor:
+      problem: "重心起伏过大，难以连续进攻。"
+      suggestion: "建议做重心转换专项训练，击球时膝关节弯曲度保持相对固定。"
+
+  swing_range:
+    good:
+      problem: ""
+      suggestion: "挥拍轨迹完整，发力充分。"
+    fair:
+      problem: "挥拍轨迹偏小，发力不够充分。"
+      suggestion: "适当增大引拍幅度，击球后顺势完成随挥动作。"
+    poor:
+      problem: "挥拍轨迹过小或过大，击球动作不合理。"
+      suggestion: "进行徒手挥拍练习，固定动作轨迹，再配合多球训练形成肌肉记忆。"
+
+  swing_speed:
+    good:
+      problem: ""
+      suggestion: "挥拍加速度合理，爆发力运用充分。"
+    fair:
+      problem: "挥拍加速度不足，击球瞬间爆发力不够。"
+      suggestion: "注意击球瞬间前臂快速内收加速，体会鞭打式发力。"
+    poor:
+      problem: "挥拍加速度明显偏小，难以打出高质量击球。"
+      suggestion: "进行快速挥拍专项训练，重点提升击球瞬间的加速度。"

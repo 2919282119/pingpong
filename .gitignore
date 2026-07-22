@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Uploads
+backend/uploads/*
+
+# Models (large binary files)
+backend/app/models/pose_landmarker_lite.task
+
+# Config with secrets
+backend/.env
+
+# PaddleVideo submodule
+backend/PaddleVideo/
+
+# Temp / runtime
+backend/temp/
+backend/.log.txt
+backend/paddle_model_temp_dir/
+
+# ONNX models (large, generated)
+backend/onnx_models/
+
+# Backup files
+*.bak
+
+# Git
+*.orig

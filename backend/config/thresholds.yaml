@@ -1,0 +1,38 @@
+# 各项指标的评分阈值配置
+# level: good / fair / poor
+# score: 对应区间的打分
+metrics:
+  similarity_score:
+    good: { min: 80, max: 100, score: 100 }
+    fair: { min: 60, max: 80, score: 70 }
+    poor: { min: 0, max: 60, score: 40 }
+
+  elbow_angle:
+    good: { min: 80, max: 100, score: 100 }
+    fair: { min: 65, max: 80, min2: 100, max2: 115, score: 70 }
+    poor: { min: 0, max: 65, min2: 115, max2: 180, score: 40 }
+
+  racket_height:
+    good: { min: -0.15, max: 0.05, score: 100 }
+    fair: { min: -0.25, max: -0.15, min2: 0.05, max2: 0.15, score: 70 }
+    poor: { min: -0.5, max: -0.25, min2: 0.15, max2: 0.5, score: 40 }
+
+  hip_rotation:
+    good: { min: 0, max: 0.08, score: 100 }
+    fair: { min: 0.08, max: 0.15, score: 70 }
+    poor: { min: 0.15, max: 0.5, score: 40 }
+
+  cog_fluctuation:
+    good: { min: 0, max: 0.02, score: 100 }
+    fair: { min: 0.02, max: 0.04, score: 70 }
+    poor: { min: 0.04, max: 0.1, score: 40 }
+
+  swing_range:
+    good: { min: 0, max: 0.15, score: 100 }
+    fair: { min: 0.15, max: 0.3, score: 70 }
+    poor: { min: 0.3, max: 1.0, score: 40 }
+
+  swing_speed:
+    good: { min: 0, max: 0.02, score: 100 }
+    fair: { min: 0.02, max: 0.05, score: 70 }
+    poor: { min: 0.05, max: 0.2, score: 40 }
