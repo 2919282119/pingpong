@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 import jwt as pyjwt
 
-JWT_SECRET = os.environ.get("JWT_SECRET", "JWT_SECRET_ENV_VAR")
+JWT_SECRET = os.environ.get("JWT_SECRET", "")
 JWT_EXPIRES_IN = os.environ.get("JWT_EXPIRES_IN", "7d")
 
 

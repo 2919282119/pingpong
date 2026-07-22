@@ -43,7 +43,7 @@ os.makedirs(TEMP_DIR, exist_ok=True)
 ONNX_MODELS_DIR = BASE_DIR / "onnx_models"
 
 # Baidu Maps API
-BAIDU_MAP_AK = os.environ.get("BAIDU_MAP_AK", "BAIDU_MAP_AK_ENV_VAR")
+BAIDU_MAP_AK = os.environ.get("BAIDU_MAP_AK", "")
 
 # PaddleVideo BMN model path (configurable)
 PADDLEVIDEO_BMN_MODEL = os.environ.get(
