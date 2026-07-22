@@ -119,6 +119,22 @@ pingpong/
 - FFmpeg（需加入 PATH）
 - CUDA 11.8 + PaddlePaddle GPU（可选，用于加速 BMN 推理）
 
+### 环境配置
+
+复制环境变量模板并填写实际配置：
+
+```bash
+cp backend/.env.example backend/.env
+```
+
+编辑 `backend/.env`，填入你的 MySQL 密码、JWT 密钥等：
+
+```env
+MYSQL_PASSWORD=your_mysql_password
+JWT_SECRET=your_random_secret_key
+BAIDU_MAP_AK=your_baidu_map_ak    # 可选，用于附近球友功能
+```
+
 ### 数据库初始化
 
 ```bash
@@ -171,10 +187,19 @@ npm run dev
 
 ### 环境变量
 
+所有敏感配置通过环境变量或 `backend/.env` 文件加载（参考 `backend/.env.example`）：
+
 | 变量 | 说明 | 默认值 |
 |------|------|--------|
+| `MYSQL_HOST` | MySQL 主机 | `localhost` |
+| `MYSQL_PORT` | MySQL 端口 | `3306` |
+| `MYSQL_USER` | MySQL 用户名 | `root` |
+| `MYSQL_PASSWORD` | MySQL 密码 | （必填） |
+| `MYSQL_DATABASE` | MySQL 数据库名 | `pingpong` |
+| `JWT_SECRET` | JWT 签名密钥 | （必填） |
+| `JWT_EXPIRES_IN` | JWT 过期时间 | `7d` |
+| `BAIDU_MAP_AK` | 百度地图 API Key | （可选） |
 | `CUDA_VISIBLE_DEVICES` | CUDA 设备编号 | `0` |
-| `BAIDU_MAP_AK` | 百度地图 API Key | 内置测试 Key |
 | `PP_BMN_MODEL` | PaddleVideo BMN 模型路径 | `/models/paddlevideo/bmn/` |
 
 ## API 概览
