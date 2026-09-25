@@ -46,6 +46,9 @@ def update_user_info(body: dict, current_user: User = Depends(get_current_user),
                "latitude", "longitude"}
     for key, val in body.items():
         if key in allowed:
+            # MySQL 严格模式下 DATE 列不接受空字符串，未填时存 NULL
+            if key == "birthdate" and val == "":
+                val = None
             setattr(current_user, key, val)
     db.commit()
     return {"success": True, "userInfo": {
