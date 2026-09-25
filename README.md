@@ -132,6 +132,8 @@ cp backend/.env.example backend/.env
 ```env
 MYSQL_PASSWORD=your_mysql_password
 JWT_SECRET=your_random_secret_key
+EMAIL_USER=your_email@qq.com      # 发送注册验证码的邮箱
+EMAIL_PASS=your_smtp_auth_code    # 该邮箱的 SMTP 授权码（非登录密码）
 BAIDU_MAP_AK=your_baidu_map_ak    # 可选，用于附近球友功能
 ```
 
@@ -198,6 +200,10 @@ npm run dev
 | `MYSQL_DATABASE` | MySQL 数据库名 | `pingpong` |
 | `JWT_SECRET` | JWT 签名密钥 | （必填） |
 | `JWT_EXPIRES_IN` | JWT 过期时间 | `7d` |
+| `EMAIL_HOST` | SMTP 服务器 | `smtp.qq.com` |
+| `EMAIL_PORT` | SMTP 端口 | `465` |
+| `EMAIL_USER` | 发件邮箱 | （必填） |
+| `EMAIL_PASS` | 邮箱 SMTP 授权码 | （必填） |
 | `BAIDU_MAP_AK` | 百度地图 API Key | （可选） |
 | `CUDA_VISIBLE_DEVICES` | CUDA 设备编号 | `0` |
 | `PP_BMN_MODEL` | PaddleVideo BMN 模型路径 | `/models/paddlevideo/bmn/` |

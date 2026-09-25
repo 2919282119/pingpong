@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 EMAIL_CONFIG = {
     "host": os.environ.get("EMAIL_HOST", "smtp.qq.com"),
     "port": int(os.environ.get("EMAIL_PORT", "465")),
-    "user": os.environ.get("EMAIL_USER", "2919282119@qq.com"),
-    "pass": os.environ.get("EMAIL_PASS", "gbwiixfruxdgdfda"),
+    "user": os.environ.get("EMAIL_USER", ""),
+    "pass": os.environ.get("EMAIL_PASS", ""),
 }
 
 
