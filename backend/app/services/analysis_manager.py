@@ -87,6 +87,7 @@ class AnalysisManager:
             result = self._load_result(entry["id"])
             self._tasks[entry["id"]] = {
                 "id": entry["id"],
+                "user_id": entry.get("user_id"),
                 "action_type": entry["action_type"],
                 "status": "done",
                 "progress": None,
@@ -96,13 +97,14 @@ class AnalysisManager:
                 "_summary": entry if result is None else None,
             }
 
-    def create_task(self, video_path: str, action_type: str) -> str:
+    def create_task(self, video_path: str, action_type: str, user_id: str) -> str:
         """Create a new analysis task and start background processing."""
         task_id = uuid.uuid4().hex[:8]
         tracker = ProgressTracker()
 
         self._tasks[task_id] = {
             "id": task_id,
+            "user_id": user_id,
             "action_type": action_type,
             "status": "queued",
             "progress": tracker,
@@ -169,6 +171,7 @@ class AnalysisManager:
                 segs = r["statistics"]["total_segments"] if isinstance(r, dict) else r.statistics.total_segments
                 entries.append({
                     "id": t["id"],
+                    "user_id": t.get("user_id"),
                     "action_type": t["action_type"],
                     "overall_score": score,
                     "total_segments": segs,
@@ -177,10 +180,10 @@ class AnalysisManager:
         entries.sort(key=lambda x: x["created_at"], reverse=True)
         _save_history(entries)
 
-    def get_task(self, task_id: str) -> Optional[dict]:
-        """Get task info by ID."""
+    def get_task(self, task_id: str, user_id: str) -> Optional[dict]:
+        """Get task info by ID, only if it belongs to the user."""
         task = self._tasks.get(task_id)
-        if task is None:
+        if task is None or task.get("user_id") != user_id:
             return None
 
         # Handle in-memory tasks with active progress tracker
@@ -222,11 +225,11 @@ class AnalysisManager:
             "created_at": task["created_at"],
         }
 
-    def get_history(self, limit: int = 20) -> list[dict]:
-        """Get completed analysis history."""
+    def get_history(self, user_id: str, limit: int = 20) -> list[dict]:
+        """Get completed analysis history for a user."""
         entries = []
         for t in self._tasks.values():
-            if t["status"] == "done":
+            if t["status"] == "done" and t.get("user_id") == user_id:
                 r = t.get("result")
                 if r is not None:
                     score = r["overall_score"] if isinstance(r, dict) else r.overall_score
@@ -243,11 +246,11 @@ class AnalysisManager:
         entries.sort(key=lambda x: x["created_at"], reverse=True)
         return entries[:limit]
 
-    def clear_history(self):
-        """Clear all completed tasks and persisted history."""
+    def clear_history(self, user_id: str):
+        """Clear completed tasks and persisted history for a user."""
         for t in list(self._tasks.values()):
-            if t["status"] == "done":
+            if t["status"] == "done" and t.get("user_id") == user_id:
                 (TEMP_DIR / f"result_{t['id']}.json").unlink(missing_ok=True)
-        self._tasks.clear()
-        _HISTORY_FILE.unlink(missing_ok=True)
-        logger.info("Analysis history cleared")
+                del self._tasks[t["id"]]
+        self._persist_history()
+        logger.info("Analysis history cleared for user %s", user_id)

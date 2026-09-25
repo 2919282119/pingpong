@@ -1,9 +1,17 @@
 import axios from 'axios'
 
-// Use a separate axios instance WITHOUT interceptors for analysis endpoints
-// (matching the pre-merge behavior exactly)
+// Separate axios instance for analysis endpoints: injects the auth token,
+// but keeps its own response handling (no global unwrap)
 const api = axios.create({
   baseURL: '/api',
+})
+
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token')
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
 })
 
 export async function uploadVideo(file, actionType) {
