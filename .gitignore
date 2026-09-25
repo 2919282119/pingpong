@@ -22,6 +22,9 @@ frontend/.vite/
 *.swp
 *.swo
 
+# Claude Code local settings
+.claude/settings.local.json
+
 # OS
 Thumbs.db
 .DS_Store
